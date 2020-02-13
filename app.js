@@ -30,6 +30,20 @@ const store = {
   score: 0
 };
 
+/* <form>
+<fieldset> <legend>Quiz Questions</legend>
+
+<input type="radio" id="kraken" name="monster">
+<label for="kraken">Kraken</label><br/>
+
+<input type="radio" id="sasquatch" name="monster">
+<label for="sasquatch">Sasquatch</label><br/>
+
+<input type="radio" id="mothman" name="monster">
+<label for="mothman">Mothman</label>
+</fieldset>
+</form> */
+
 /**
  * 
  * Technical requirements:
