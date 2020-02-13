@@ -1,3 +1,38 @@
+'use strict';
+// render the "do you want to start the quiz"
+function renderStart() {
+
+}
+
+// see that they hit the button and then actually start it
+$(function startQuiz() {
+  $('#placeholder').submit( event => {
+  event.preventDefault;
+  console.log('quiz started');
+  renderQuestion() {
+
+  };
+
+}
+
+function renderQuestion() {
+.html
+`<form>
+<fieldset> <legend>Quiz Questions</legend>
+
+<input type="radio" id="Choice1" name="Placeholder">
+<label for="Choice1">Choice1</label><br/>
+
+<input type="radio" id="Choice2" name="Placeholder">
+<label for="Choice2">Choice2</label><br/>
+
+<input type="radio" id="Choice3" name="Placeholder">
+<label for="Choice3">Choice3</label>
+</fieldset>
+</form>`
+
+}
+
 /**
  * Example store structure
  */
@@ -33,16 +68,19 @@ const store = {
 /* <form>
 <fieldset> <legend>Quiz Questions</legend>
 
-<input type="radio" id="kraken" name="monster">
-<label for="kraken">Kraken</label><br/>
+<input type="radio" id="Choice1" name="Placeholder">
+<label for="Choice1">Choice1</label><br/>
 
-<input type="radio" id="sasquatch" name="monster">
-<label for="sasquatch">Sasquatch</label><br/>
+<input type="radio" id="Choice2" name="Placeholder">
+<label for="Choice2">Choice2</label><br/>
 
-<input type="radio" id="mothman" name="monster">
-<label for="mothman">Mothman</label>
+<input type="radio" id="Choice3" name="Placeholder">
+<label for="Choice3">Choice3</label>
 </fieldset>
 </form> */
+
+//to do the stuff when the page loads
+$(whateverTheLastOneIs)
 
 /**
  * 
