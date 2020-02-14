@@ -1,15 +1,42 @@
 'use strict';
 
+/* const store = {
+  // 5 or more questions are required
+  questions: [
+    {
+      question: 'What color is broccoli?',
+      answers: [
+        'red',
+        'orange',
+        'pink',
+        'green'
+      ],
+      correctAnswer: 'green'
+    },
+    {
+      question: 'What is the current year?',
+      answers: [
+        '1970',
+        '2015',
+        '2019',
+        '2005'
+      ],
+      correctAnswer: '2019'
+    }
+  ],
+  quizStarted: false,
+  questionNumber: 0,
+  score: 0
+};
+*/
+
+
+
 // starting page
 function pageBegin() {
-  $('main').html(`<form id="quiz-form">
-    <fieldset> <legend>Hello. Do you want to begin?</legend>
-
-    <input type="radio" id="YES" name="YES">
-    <label for="YES">YES</label><br/>
-    <button type="submit">Start</button>
-            
-    </fieldset>`);
+  $('header').html(`<h1>This is the message to begin.  Plz Click.  Thnx.</h1>`)
+  $('main').html(`
+    <button type="submit">Start</button>`);
 }
 
 $(pageBegin);
@@ -17,14 +44,15 @@ $(pageBegin);
 
 // see that they hit the button and then actually start it
 function startQuiz() {
-  $('main').submit( event => {
+  $('main').on("click"( event => {
     event.preventDefault();
     renderQuestion();
-  }); 
+  })); 
 }
 $(startQuiz);
 
 // render the question output after the user clicks submit to being quiz
+
 function renderQuestion() {
   console.log('Is this even working?');
 $('main').html(`<form>
@@ -44,8 +72,17 @@ $('main').html(`<form>
 </form>`
   );}
 
-$(renderQuestion);
+/*
+function renderFunctions() {
+  function1()
+  function2()
+  function3()
+  function4()
+};
 
+$(doTheThing);
+
+*/
 
 /**
  * Example store structure
