@@ -81,10 +81,20 @@ function startQuiz() {
 }
 $(startQuiz);
 
-
 function whatQuestionNumber() {
-  Object.entries(store).map(([questionNumber, value]) => [questionNumber, value + 1]);
-  console.log(`${store.questionNumber}`);
+  // Object.entries(store).map(([questionNumber, value]) => [questionNumber, value + 1]);
+  // console.log(`${store.questionNumber}`);
+
+}
+
+function currentQuestion() {
+  // Object.entries(store).map(([questionNumber, value]) => [questionNumber, value + 1]);
+  // console.log(`${store.questionNumber}`);
+  let questions = store['questions'];
+  let currentQuestion = questions[store.questionNumber];
+  console.log(questions);
+  console.log(currentQuestion);
+  return currentQuestion;
 }
 $(whatQuestionNumber);
 
