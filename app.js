@@ -6,7 +6,7 @@ const store = {
     {
       question: 'Question 1',
       answers: [
-        'Choice 1',
+        'Bro you working?',
         'Choice 2',
         'Choice 3',
         'Choice 4'
@@ -96,23 +96,26 @@ function currentQuestion() {
   console.log(currentQuestion);
   return currentQuestion;
 }
-$(whatQuestionNumber);
+$(currentQuestion);
 
 // render the question output after the user clicks submit to being quiz
 
 function renderQuestion() {
   console.log('Is this even working?');
 $('main').html(`<form>
-<fieldset> <legend>Quiz Questions</legend>
+<fieldset> <legend>${currentQuestion()}</legend>
 
 <input type="radio" id="Choice1" name="Placeholder">
-<label for="Choice1">Choice1</label><br/>
+<label for="Choice1">${store.questions[store.questionNumber[0]]}</label><br/>
 
 <input type="radio" id="Choice2" name="Placeholder">
-<label for="Choice2">Choice2</label><br/>
+<label for="Choice2">${store.questions[store.questionNumber[1]]}</label><br/>
 
 <input type="radio" id="Choice3" name="Placeholder">
-<label for="Choice3">Choice3</label>
+<label for="Choice3">${store.questions[store.questionNumber[2]]}</label><br/>
+
+<input type="radio" id="Choice3" name="Placeholder">
+<label for="Choice3">${store.questions[store.questionNumber[3]]}</label><br/>
 
 <button type="submit">Submit</button>
 </fieldset>
