@@ -84,7 +84,7 @@ $(startQuiz);
 
 function whatQuestionNumber() {
   Object.entries(store).map(([questionNumber, value]) => [questionNumber, value + 1]);
-  console.log(`${questionNumber}`);
+  console.log(`${store.questionNumber}`);
 }
 $(whatQuestionNumber);
 
