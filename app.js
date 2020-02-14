@@ -106,16 +106,16 @@ function renderQuestion() {
 $('main').html(`<form>
 <fieldset> <legend>${currentQuestion()}</legend>
 
-<input type="radio" id="Choice1" name="${store.questions[store.questionNumber].answers[0]}">
+<input type="radio" id="Choice1" name="Choice" value="${store.questions[store.questionNumber].answers[0]}">
 <label for="Choice1">${store.questions[store.questionNumber].answers[0]}</label><br/>
 
-<input type="radio" id="Choice2" name="${store.questions[store.questionNumber].answers[1]}">
+<input type="radio" id="Choice2" name="Choice" value="${store.questions[store.questionNumber].answers[1]}">
 <label for="Choice2">${store.questions[store.questionNumber].answers[1]}</label><br/>
 
-<input type="radio" id="Choice3" name="${store.questions[store.questionNumber].answers[2]}">
+<input type="radio" id="Choice3" name="Choice" value="${store.questions[store.questionNumber].answers[2]}">
 <label for="Choice3">${store.questions[store.questionNumber].answers[2]}</label><br/>
 
-<input type="radio" id="Choice4" name="${store.questions[store.questionNumber].answers[3]}">
+<input type="radio" id="Choice4" name="Choice" value="${store.questions[store.questionNumber].answers[3]}">
 <label for="Choice4">${store.questions[store.questionNumber].answers[3]}</label><br/>
 
 <button type="submit">Submit</button>
@@ -124,15 +124,26 @@ $('main').html(`<form>
   );}
 
 function getAnswerAndCompare() {
+  $('main').on('click', ( event => {
+    event.preventDefault();
+    
   
   const correct = store.questions[questionNumber].correctAnswer; 
   
-  let selectedOption = $('input[=]:checked').val();
+  let selectedOption = $('input[name=Choice]:checked').val();
 
-  if($())
-  
-  $('main').on('click', ( event => {
-    event.preventDefault();
+  if(selectedOption === correct) {
+    $('main').html(`
+    <p>Well howdy doo, you got it right.  Continue on yer way, partner.  Here's a button to push that I haven't made yet.</p>
+    <button type="submit">Nice!</button>
+    `
+  }
+  else{
+    $('main').html(`
+    <p>Yikes.  You selected ${selectedOption} while the correct answer was ${correct}.  You should spend some time to reflect, and then click this button when you can live with yourself again.</p>
+    <button type="submit">I won't give up! I want to live!</button>
+    `
+  }
 
   }))
 } 
