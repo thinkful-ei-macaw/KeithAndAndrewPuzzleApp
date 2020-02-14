@@ -1,23 +1,33 @@
 'use strict';
-// render the "do you want to start the quiz"
-function renderStart() {
 
+// starting page
+function pageBegin() {
+  $('main').html(`<form id="quiz-form">
+    <fieldset> <legend>Hello. Do you want to begin?</legend>
+
+    <input type="radio" id="YES" name="YES">
+    <label for="YES">YES</label><br/>
+    <button type="submit">Start</button>
+            
+    </fieldset>`);
 }
+
+$(pageBegin);
+
 
 // see that they hit the button and then actually start it
 function startQuiz() {
-  console.log('hello world');
-  $('#quiz-form').submit( event => {
+  $('main').submit( event => {
     event.preventDefault();
-    console.log('quiz started');
+    renderQuestion();
   }); 
 }
 $(startQuiz);
 
-/*
+// render the question output after the user clicks submit to being quiz
 function renderQuestion() {
-.html
- `<form>
+  console.log('Is this even working?');
+$('main').html(`<form>
 <fieldset> <legend>Quiz Questions</legend>
 
 <input type="radio" id="Choice1" name="Placeholder">
@@ -28,41 +38,20 @@ function renderQuestion() {
 
 <input type="radio" id="Choice3" name="Placeholder">
 <label for="Choice3">Choice3</label>
+
+<button type="submit">Submit</button>
 </fieldset>
 </form>`
-} */
+  );}
+
+$(renderQuestion);
+
 
 /**
  * Example store structure
  */
-const store = {
-  // 5 or more questions are required
-  questions: [
-    {
-      question: 'What color is broccoli?',
-      answers: [
-        'red',
-        'orange',
-        'pink',
-        'green'
-      ],
-      correctAnswer: 'green'
-    },
-    {
-      question: 'What is the current year?',
-      answers: [
-        '1970',
-        '2015',
-        '2019',
-        '2005'
-      ],
-      correctAnswer: '2019'
-    }
-  ],
-  quizStarted: false,
-  questionNumber: 0,
-  score: 0
-};
+
+// const question1 = 
 
 /* <form>
 <fieldset> <legend>Quiz Questions</legend>
