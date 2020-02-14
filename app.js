@@ -5,19 +5,19 @@ function renderStart() {
 }
 
 // see that they hit the button and then actually start it
-$(function startQuiz() {
-  $('#placeholder').submit( event => {
-  event.preventDefault;
-  console.log('quiz started');
-  renderQuestion() {
-
-  };
-
+function startQuiz() {
+  console.log('hello world');
+  $('#quiz-form').submit( event => {
+    event.preventDefault();
+    console.log('quiz started');
+  }); 
 }
+$(startQuiz);
 
+/*
 function renderQuestion() {
 .html
-`<form>
+ `<form>
 <fieldset> <legend>Quiz Questions</legend>
 
 <input type="radio" id="Choice1" name="Placeholder">
@@ -30,8 +30,7 @@ function renderQuestion() {
 <label for="Choice3">Choice3</label>
 </fieldset>
 </form>`
-
-}
+} */
 
 /**
  * Example store structure
@@ -80,7 +79,7 @@ const store = {
 </form> */
 
 //to do the stuff when the page loads
-$(whateverTheLastOneIs)
+// $(whateverTheLastOneIs)
 
 /**
  * 
