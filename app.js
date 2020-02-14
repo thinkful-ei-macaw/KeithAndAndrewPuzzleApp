@@ -6,7 +6,7 @@ const store = {
     {
       question: 'Question 1',
       answers: [
-        'Bro you working?',
+        'Choice 1',
         'Choice 2',
         'Choice 3',
         'Choice 4'
@@ -64,13 +64,12 @@ const store = {
 
 // starting page
 function pageBegin() {
-  $('header').html(`<h1>This is the message to begin.  Plz Click.  Thnx.</h1>`)
+  $('header').html(`<h1>This is the message to begin.  Plz Click.  Thnx.</h1>`);
   $('main').html(`
     <button type="submit">Start</button>`);
 }
 
-$(pageBegin);
-
+$(pageBegin)
 
 // see that they hit the button and then actually start it
 function startQuiz() {
@@ -79,16 +78,16 @@ function startQuiz() {
     renderQuestion();
   })); 
 }
-$(startQuiz);
+$(startQuiz)
 
-function whatQuestionNumber() {
-  // Object.entries(store).map(([questionNumber, value]) => [questionNumber, value + 1]);
-  // console.log(`${store.questionNumber}`);
-  // $('placeholder-button').on('click', (event => {
-  //  event.preventDefault();
-  //  store.questionNumber++;
-  }))
-}
+// function whatQuestionNumber() {
+// Object.entries(store).map(([questionNumber, value]) => [questionNumber, value + 1]);
+// console.log(`${store.questionNumber}`);
+// $('placeholder-button').on('click', (event => {
+//  event.preventDefault();
+//  store.questionNumber++;
+// }));
+// }
 
 function currentQuestion() {
   // Object.entries(store).map(([questionNumber, value]) => [questionNumber, value + 1]);
@@ -103,7 +102,7 @@ $(currentQuestion);
 
 function renderQuestion() {
   console.log('Is this even working?');
-$('main').html(`<form>
+  $('main').html(`<form>
 <fieldset> <legend>${currentQuestion()}</legend>
 
 <input type="radio" id="Choice1" name="Choice" value="${store.questions[store.questionNumber].answers[0]}">
@@ -123,42 +122,39 @@ $('main').html(`<form>
 </form>`
   );}
 
+  $(renderQuestion)
+
 function getAnswerAndCompare() {
   $('main').on('click', ( event => {
-    event.preventDefault();
     
+    event.preventDefault();
+      
+    const correct = store.questions[store.questionNumber].correctAnswer; 
+    console.log(correct);
   
-  const correct = store.questions[questionNumber].correctAnswer; 
-  
-  let selectedOption = $('input[name=Choice]:checked').val();
+    let selectedOption = $('input[value=]:checked').val();
+    console.log(selectedOption);
 
-  if(selectedOption === correct) {
-    $('main').html(`
+    if(selectedOption === correct) {
+      $('main').html(`
     <p>Well howdy doo, you got it right.  Continue on yer way, partner.  Here's a button to push that I haven't made yet.</p>
     <button type="submit">Nice!</button>
     `
-  }
-  else{
-    $('main').html(`
+      );}
+    else{
+      $('main').html(`
     <p>Yikes.  You selected ${selectedOption} while the correct answer was ${correct}.  You should spend some time to reflect, and then click this button when you can live with yourself again.</p>
     <button type="submit">I won't give up! I want to live!</button>
     `
-  }
+      );}
 
-  }))
-} 
+  }));
+}
+$(getAnswerAndCompare)
 
-/*
-function renderFunctions() {
-  function1()
-  function2()
-  function3()
-  function4()
-};
 
-$(doTheThing);
 
-*/
+
 
 /**
  * Example store structure
