@@ -84,17 +84,18 @@ $(startQuiz);
 function whatQuestionNumber() {
   // Object.entries(store).map(([questionNumber, value]) => [questionNumber, value + 1]);
   // console.log(`${store.questionNumber}`);
-
+  // $('placeholder-button').on('click', (event => {
+  //  event.preventDefault();
+  //  store.questionNumber++;
+  }))
 }
 
 function currentQuestion() {
   // Object.entries(store).map(([questionNumber, value]) => [questionNumber, value + 1]);
   // console.log(`${store.questionNumber}`);
-  let questions = store['questions'];
-  let currentQuestion = questions[store.questionNumber];
+  let questions = store.questions[store.questionNumber].question;
   console.log(questions);
-  console.log(currentQuestion);
-  return currentQuestion;
+  return questions;
 }
 $(currentQuestion);
 
@@ -105,22 +106,36 @@ function renderQuestion() {
 $('main').html(`<form>
 <fieldset> <legend>${currentQuestion()}</legend>
 
-<input type="radio" id="Choice1" name="Placeholder">
-<label for="Choice1">${store.questions[store.questionNumber[0]]}</label><br/>
+<input type="radio" id="Choice1" name="${store.questions[store.questionNumber].answers[0]}">
+<label for="Choice1">${store.questions[store.questionNumber].answers[0]}</label><br/>
 
-<input type="radio" id="Choice2" name="Placeholder">
-<label for="Choice2">${store.questions[store.questionNumber[1]]}</label><br/>
+<input type="radio" id="Choice2" name="${store.questions[store.questionNumber].answers[1]}">
+<label for="Choice2">${store.questions[store.questionNumber].answers[1]}</label><br/>
 
-<input type="radio" id="Choice3" name="Placeholder">
-<label for="Choice3">${store.questions[store.questionNumber[2]]}</label><br/>
+<input type="radio" id="Choice3" name="${store.questions[store.questionNumber].answers[2]}">
+<label for="Choice3">${store.questions[store.questionNumber].answers[2]}</label><br/>
 
-<input type="radio" id="Choice3" name="Placeholder">
-<label for="Choice3">${store.questions[store.questionNumber[3]]}</label><br/>
+<input type="radio" id="Choice4" name="${store.questions[store.questionNumber].answers[3]}">
+<label for="Choice4">${store.questions[store.questionNumber].answers[3]}</label><br/>
 
 <button type="submit">Submit</button>
 </fieldset>
 </form>`
   );}
+
+function getAnswerAndCompare() {
+  
+  const correct = store.questions[questionNumber].correctAnswer; 
+  
+  let selectedOption = $('input[=]:checked').val();
+
+  if($())
+  
+  $('main').on('click', ( event => {
+    event.preventDefault();
+
+  }))
+} 
 
 /*
 function renderFunctions() {
