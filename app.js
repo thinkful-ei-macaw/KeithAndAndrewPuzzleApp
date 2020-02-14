@@ -1,34 +1,64 @@
 'use strict';
 
-/* const store = {
+const store = {
   // 5 or more questions are required
   questions: [
     {
-      question: 'What color is broccoli?',
+      question: 'Question 1',
       answers: [
-        'red',
-        'orange',
-        'pink',
-        'green'
+        'Choice 1',
+        'Choice 2',
+        'Choice 3',
+        'Choice 4'
       ],
-      correctAnswer: 'green'
+      correctAnswer: 'Choice 1'
     },
     {
-      question: 'What is the current year?',
+      question: 'Question 2',
       answers: [
-        '1970',
-        '2015',
-        '2019',
-        '2005'
+        'Choice 1',
+        'Choice 2',
+        'Choice 3',
+        'Choice 4'
       ],
-      correctAnswer: '2019'
-    }
+      correctAnswer: 'Choice 1'
+    },
+    {
+      question: 'Question 3',
+      answers: [
+        'Choice 1',
+        'Choice 2',
+        'Choice 3',
+        'Choice 4'
+      ],
+      correctAnswer: 'Choice 1'
+    },
+    {
+      question: 'Question 4',
+      answers: [
+        'Choice 1',
+        'Choice 2',
+        'Choice 3',
+        'Choice 4'
+      ],
+      correctAnswer: 'Choice 1'
+    },
+    {
+      question: 'Question 5',
+      answers: [
+        'Choice 1',
+        'Choice 2',
+        'Choice 3',
+        'Choice 4'
+      ],
+      correctAnswer: 'Choice 1'
+    },
   ],
   quizStarted: false,
   questionNumber: 0,
   score: 0
 };
-*/
+
 
 
 
@@ -44,12 +74,19 @@ $(pageBegin);
 
 // see that they hit the button and then actually start it
 function startQuiz() {
-  $('main').on("click"( event => {
+  $('main').on("click", ( event => {
     event.preventDefault();
     renderQuestion();
   })); 
 }
 $(startQuiz);
+
+
+function whatQuestionNumber() {
+  Object.entries(store).map(([questionNumber, value]) => [questionNumber, value + 1]);
+  console.log(`${questionNumber}`);
+}
+$(whatQuestionNumber);
 
 // render the question output after the user clicks submit to being quiz
 
