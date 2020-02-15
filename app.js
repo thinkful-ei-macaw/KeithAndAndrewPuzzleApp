@@ -66,19 +66,20 @@ const store = {
 function pageBegin() {
   $('header').html(`<h1>This is the message to begin.  Plz Click.  Thnx.</h1>`);
   $('main').html(`
-    <button type="submit">Start</button>`);
+    <button id="start" type="submit">Start</button>`);
 }
 
 $(pageBegin)
 
 // see that they hit the button and then actually start it
 function startQuiz() {
-  $('main').on("click", ( event => {
+  $('#start').on("click", ( event => {
     event.preventDefault();
     renderQuestion();
-  })); 
+  }));
+  getAnswerAndCompare() 
 }
-$(startQuiz)
+$(startQuiz) 
 
 // function whatQuestionNumber() {
 // Object.entries(store).map(([questionNumber, value]) => [questionNumber, value + 1]);
@@ -117,22 +118,20 @@ function renderQuestion() {
 <input type="radio" id="Choice4" name="Choice" value="${store.questions[store.questionNumber].answers[3]}">
 <label for="Choice4">${store.questions[store.questionNumber].answers[3]}</label><br/>
 
-<button type="submit">Submit</button>
+<button id="abc" type="submit">Submit</button>
 </fieldset>
 </form>`
   );}
 
-  $(renderQuestion)
-
 function getAnswerAndCompare() {
-  $('main').on('click', ( event => {
+  $('#abc').on('click', ( event => {
     
     event.preventDefault();
       
     const correct = store.questions[store.questionNumber].correctAnswer; 
     console.log(correct);
   
-    let selectedOption = $('input[value=]:checked').val();
+    let selectedOption = $('input[name=Choice]:checked').val();
     console.log(selectedOption);
 
     if(selectedOption === correct) {
@@ -150,7 +149,6 @@ function getAnswerAndCompare() {
 
   }));
 }
-$(getAnswerAndCompare)
 
 
 
