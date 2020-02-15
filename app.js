@@ -66,22 +66,18 @@ const store = {
 function pageBegin() {
   console.log('render pageBegin()');
   $('header').html('<h1>Welcome to the Lost Quiz.  Enter, if you dare.</h1>');
-  $('.first').html(`
+  $('main').html(`
     <button id="start" type="submit">Start</button>`);
 }
 
 
 // see that they hit the button and then actually start it
 function startQuiz() {
-  $('.first').on('click', '#start', ( event => {
-    console.log('render startQuiz');
+  $('main').on('click', '#start', ( event => {
     event.preventDefault();
-    store.score = 0;
-    store.questionNumber = 0;
     renderQuestion();
-    $('header').html(`<h1>You are now taking the quiz</h1><br/>
-    <p>You current score ${store.score} out of 5</p><br/>
-    <p>You are currently answering question number ${(store.questionNumber) + 1}</p>`);
+    $('header').html(`<h1>You are now taking the quiz</h1><br/>`
+    );
   }));
   getAnswerAndCompare();
   nextQuestion();
@@ -95,6 +91,8 @@ $(startQuiz)
 function renderQuestion() {
   console.log('renderQuestion()');
   $('main').html(`<form>
+<p>You current score ${store.score} out of 5</p><br/>
+<p>You are currently answering question number ${(store.questionNumber) + 1}</p><br/>
 <fieldset> <legend>${store.questions[store.questionNumber].question}</legend>
 <input type="radio" id="Choice1" name="Choice" value="${store.questions[store.questionNumber].answers[0]}">
 <label for="Choice1">${store.questions[store.questionNumber].answers[0]}</label><br/>
@@ -109,7 +107,7 @@ function renderQuestion() {
 </form>`);}
 
 function getAnswerAndCompare() {
-  $('main').submit( event => {
+  $('main').on('click', '#abc', event => {
     console.log('getAnswerAndCompare()');
     event.preventDefault();
       
@@ -130,40 +128,52 @@ function getAnswerAndCompare() {
 
 function getCorrectFeedback() {
   console.log('getCorrectFeedback()');
+  store.score++;
+  store.questionNumber++;
   if(store.questionNumber < 5) {
-    store.questionNumber++;
+    
+    
+    console.log(store.questionNumber);
     $('main').html(`
+    <p>You current score ${store.score} out of 5</p><br/>
     <p>Well howdy doo, you got it right.  Continue on yer way, partner.  Here's a button to push that I haven't made yet.</p>
-    <button type="submit" name="nextUp">Nice!</button>`)
+    <button type="submit" id="nextUp">Nice!</button>`)
   } else {
     $('main').html(`
+    <p>You current score ${store.score} out of 5</p><br/>
     <p>Well howdy doo, you got it right.  Continue on yer way, partner.  Here's a button to push that I haven't made yet.</p>
-    <button type="submit" name="finished">Finish Quiz yea boiii</button>`)
+    <button type="submit" id="finished">Finish Quiz yea boiii</button>`)
   }
  
-  store.score++;
+  
 }
 
 function getWrongFeedback() {
   console.log('render wrongFeedBack()');
+  
+  
+  const correct = store.questions[store.questionNumber].correctAnswer; 
+  let selectedOption = $('input[name=Choice]:checked').val();
+  store.questionNumber++;
   if(store.questionNumber < 5) {
-    const correct = store.questions[store.questionNumber].correctAnswer; 
-    let selectedOption = $('input[name=Choice]:checked').val();
-    store.questionNumber++;
     
-    $('.second').html(`
+    
+    console.log(store.questionNumber);
+    $('main').html(`
+    <p>You current score ${store.score} out of 5</p><br/>
     <p>Yikes.  You selected ${selectedOption} while the correct answer was ${correct}.  You should spend some time to reflect, and then click this button when you can live with yourself again.</p>
-    <button type="submit" name="nextUp">I won't give up! I want to live!</button>`)
+    <button type="submit" id="nextUp">I won't give up! I want to live!</button>`)
   } else {
-    $('.second').html(`
+    $('main').html(`
+    <p>You current score ${store.score} out of 5</p><br/>
     <p>Yikes.  You selected ${selectedOption} while the correct answer was ${correct}.  You should spend some time to reflect, and then click this button when you can live with yourself again.</p>
-    <button type="submit" name="finished">I won't give up! I want to live!</button>`)
+    <button type="submit" id="finished">Good Lord it's finally over praise holy sweet jesus!</button>`)
   }
 };
 
 function nextQuestion() {
  
-  $('main').submit( event => {
+  $('main').on('click', '#nextUp', event => {
     console.log('render nextQuestion()')
     event.preventDefault();
     renderQuestion();
@@ -172,16 +182,20 @@ function nextQuestion() {
 
 function endQuiz() {
   
-  $('#finished').on('click', ( event => {
+  $('main').on('click', '#finished', ( event => {
     console.log('render endQuiz()');
     event.preventDefault();
-    $('header').html(`<h1>Congrats! You've finished!!</h1><br/>
+    $('header').html(`<h1>Congrats! You've finished!!</h1><br/>`
+    );
+    $('main').html(`
     <p>You scored a ${store.score} out of 5</p><br/>
     <p>Would you like to retake the quiz?</p><br/>
-    <button type="submit" name="start">CLICK HERE!</button>
+    <button type="submit" id="start">CLICK HERE!</button>
     `)
+    store.score = 0;
+    store.questionNumber = 0;
   }))
-}
+};
 
 $(pageBegin)
 
