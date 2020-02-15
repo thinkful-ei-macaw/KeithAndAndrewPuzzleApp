@@ -4,54 +4,54 @@ const store = {
   // 5 or more questions are required
   questions: [
     {
-      question: 'Question 1',
+      question: 'What type of plane did the survivors arrive on The Island with?',
       answers: [
-        'Choice 1',
-        'Choice 2',
-        'Choice 3',
-        'Choice 4'
+        'Boeing 777',
+        'The Fortnight Battle Bus',
+        'The Concord',
+        'The Judge Dread Jet Pack'
       ],
-      correctAnswer: 'Choice 1'
+      correctAnswer: 'Boeing 777'
     },
     {
-      question: 'Question 2',
+      question: 'What are the numbers used in the Valenzetti Equation?',
       answers: [
-        'Choice 1',
-        'Choice 2',
-        'Choice 3',
-        'Choice 4'
+        'Pi and 42',
+        '4 8 15 16 23 42',
+        '1 Fish 2 Fish Red Fish Blue Fish',
+        '1 2 3'
       ],
-      correctAnswer: 'Choice 1'
+      correctAnswer: '4 8 15 16 23 42'
     },
     {
-      question: 'Question 3',
+      question: 'Which of the following characters did NOT arrive in Oceanic flight 815?',
       answers: [
-        'Choice 1',
-        'Choice 2',
-        'Choice 3',
-        'Choice 4'
+        'Kate Austen',
+        'Jack Shephard',
+        'Hugo Reyes',
+        'Desmond Hume'
       ],
-      correctAnswer: 'Choice 1'
+      correctAnswer: 'Desmond Hume'
     },
     {
-      question: 'Question 4',
+      question: 'What was the goal of the Dharma Initiative?',
       answers: [
-        'Choice 1',
-        'Choice 2',
-        'Choice 3',
-        'Choice 4'
+        'A sick societal expiriment on humans',
+        'Kill all of the Hostiles',
+        'Manipulate any of the six factors of the Valenzetti Equation to stave off the end of humanity',
+        'To do war against the Hanso Foundation'
       ],
-      correctAnswer: 'Choice 1'
+      correctAnswer: 'Manipulate any of the six factors of the Valenzetti Equation to stave off the end of humanity'
     },
     {
-      question: 'Question 5',
+      question: 'Who Kills Jacob?',
       answers: [
-        'Choice 1',
-        'Choice 2',
-        'Choice 3',
-        'Choice 4'
+        'The Man In Black',
+        'Hugo Reyes',
+        'Richard Alpert',
+        'Benjamin Linus'
       ],
-      correctAnswer: 'Choice 1'
+      correctAnswer: 'Benjamin Linus'
     },
   ],
   quizStarted: false,
@@ -65,7 +65,7 @@ const store = {
 // starting page
 function pageBegin() {
   console.log('render pageBegin()');
-  $('header').html('<h1>This is the message to begin.  Plz Click.  Thnx.</h1>');
+  $('header').html('<h1>Welcome to the Lost Quiz.  Enter, if you dare.</h1>');
   $('main').html(`
     <button id="start" type="submit">Start</button>`);
 }
