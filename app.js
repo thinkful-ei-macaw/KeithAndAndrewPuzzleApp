@@ -66,14 +66,14 @@ const store = {
 function pageBegin() {
   console.log('render pageBegin()');
   $('header').html('<h1>Welcome to the Lost Quiz.  Enter, if you dare.</h1>');
-  $('main').html(`
+  $('.first').html(`
     <button id="start" type="submit">Start</button>`);
 }
 
 
 // see that they hit the button and then actually start it
 function startQuiz() {
-  $('#start').on('click', ( event => {
+  $('.first').on('click', '#start', ( event => {
     console.log('render startQuiz');
     event.preventDefault();
     store.score = 0;
@@ -106,11 +106,10 @@ function renderQuestion() {
 <label for="Choice4">${store.questions[store.questionNumber].answers[3]}</label><br/>
 <button id="abc">Submit</button>
 </fieldset>
-</form>`
-  );}
+</form>`);}
 
 function getAnswerAndCompare() {
-  $('#abc').on('click', ( event => {
+  $('main').submit( event => {
     console.log('getAnswerAndCompare()');
     event.preventDefault();
       
@@ -126,7 +125,7 @@ function getAnswerAndCompare() {
       getWrongFeedback();
 
     }
-  }));
+  });
 }
 
 function getCorrectFeedback() {
@@ -148,12 +147,15 @@ function getCorrectFeedback() {
 function getWrongFeedback() {
   console.log('render wrongFeedBack()');
   if(store.questionNumber < 5) {
+    const correct = store.questions[store.questionNumber].correctAnswer; 
+    let selectedOption = $('input[name=Choice]:checked').val();
     store.questionNumber++;
-    $('main').html(`
+    
+    $('.second').html(`
     <p>Yikes.  You selected ${selectedOption} while the correct answer was ${correct}.  You should spend some time to reflect, and then click this button when you can live with yourself again.</p>
     <button type="submit" name="nextUp">I won't give up! I want to live!</button>`)
   } else {
-    $('main').html(`
+    $('.second').html(`
     <p>Yikes.  You selected ${selectedOption} while the correct answer was ${correct}.  You should spend some time to reflect, and then click this button when you can live with yourself again.</p>
     <button type="submit" name="finished">I won't give up! I want to live!</button>`)
   }
@@ -161,11 +163,11 @@ function getWrongFeedback() {
 
 function nextQuestion() {
  
-  $('#nextUp').on('click', ( event => {
+  $('main').submit( event => {
     console.log('render nextQuestion()')
     event.preventDefault();
     renderQuestion();
-  }))
+  })
 }
 
 function endQuiz() {
