@@ -1,7 +1,6 @@
 'use strict';
 
 const store = {
-  // 5 or more questions are required
   questions: [
     {
       question: 'What type of plane did the survivors arrive on The Island with?',
@@ -64,7 +63,6 @@ const store = {
 
 // starting page
 function pageBegin() {
-  console.log('render pageBegin()');
   $('header').html('<h1>Welcome to the Lost Quiz.  Enter, if you dare.</h1>');
   $('main').html(`
     <button id="start" type="submit">Start</button>`);
@@ -89,10 +87,9 @@ $(startQuiz)
 // render the question output after the user clicks submit to being quiz
 
 function renderQuestion() {
-  console.log('renderQuestion()');
   $('main').html(`<form>
-<p>You current score ${store.score} out of 5</p><br/>
-<p>You are currently answering question number ${(store.questionNumber) + 1}</p><br/>
+You current score ${store.score} out of 5<br/>
+You are currently answering question number ${(store.questionNumber) + 1}<br/><br/>
 <fieldset> <legend>${store.questions[store.questionNumber].question}</legend>
 <input type="radio" id="${store.questions[store.questionNumber].answers[0]}" name="Choice" value="${store.questions[store.questionNumber].answers[0]}">
 <label for="Choice1">${store.questions[store.questionNumber].answers[0]}</label><br/>
@@ -108,32 +105,28 @@ function renderQuestion() {
 
 function getAnswerAndCompare() {
   $('main').on('click', '#submitForm', event => {
-    console.log('getAnswerAndCompare()');
     event.preventDefault();
       
     const correct = store.questions[store.questionNumber].correctAnswer; 
-    console.log(correct);
   
     let selectedOption = $('input[name=Choice]:checked').val();
-    console.log(selectedOption);
-
-    if(selectedOption === correct) {
+  
+    if (selectedOption === correct) {
       getCorrectFeedback();
-    } else {
+    } 
+    else if (selectedOption !== correct && selectedOption !== undefined){
       getWrongFeedback();
-
+  }
+    else {
+      renderQuestion();
     }
   });
 }
 
 function getCorrectFeedback() {
-  console.log('getCorrectFeedback()');
   store.score++;
   store.questionNumber++;
   if(store.questionNumber < 5) {
-    
-    
-    console.log(store.questionNumber);
     $('main').html(`
     <p>You current score ${store.score} out of 5</p><br/>
     <p>Well howdy doody, you got it right.  Continue on yer way, partner.</p>
@@ -143,22 +136,15 @@ function getCorrectFeedback() {
     <p>You current score ${store.score} out of 5</p><br/>
     <p>Well howdy doody, you got it right.  Continue on yer way, partner.</p>
     <button type="submit" id="finished">Finish Quiz</button>`)
-  }
- 
-  
+  } 
 }
 
 function getWrongFeedback() {
-  console.log('render wrongFeedBack()');
-  
-  
   const correct = store.questions[store.questionNumber].correctAnswer; 
   let selectedOption = $('input[name=Choice]:checked').val();
   store.questionNumber++;
   if(store.questionNumber < 5) {
     
-    
-    console.log(store.questionNumber);
     $('main').html(`
     <p>You current score ${store.score} out of 5</p><br/>
     <p>Yikes.  You selected ${selectedOption} while the correct answer was ${correct}. Click Next Question below</p>
@@ -174,7 +160,6 @@ function getWrongFeedback() {
 function nextQuestion() {
  
   $('main').on('click', '#nextUp', event => {
-    console.log('render nextQuestion()')
     event.preventDefault();
     renderQuestion();
   })
@@ -183,7 +168,6 @@ function nextQuestion() {
 function endQuiz() {
   
   $('main').on('click', '#finished', ( event => {
-    console.log('render endQuiz()');
     event.preventDefault();
     $('header').html(`<h1>Congrats! You've finished!!</h1><br/>`
     );
@@ -198,54 +182,3 @@ function endQuiz() {
 };
 
 $(pageBegin)
-
-// if(store.questionNumber < 5) {} else {}
-
-
-
-/**
- * Example store structure
- */
-
-// const question1 = 
-
-/* <form>
-<fieldset> <legend>Quiz Questions</legend>
-<input type="radio" id="Choice1" name="Placeholder">
-<label for="Choice1">Choice1</label><br/>
-<input type="radio" id="Choice2" name="Placeholder">
-<label for="Choice2">Choice2</label><br/>
-<input type="radio" id="Choice3" name="Placeholder">
-<label for="Choice3">Choice3</label>
-</fieldset>
-</form> */
-
-//to do the stuff when the page loads
-// $(whateverTheLastOneIs)
-
-/**
- * 
- * Technical requirements:
- * 
- * Your app should include a render() function, that regenerates the view each time the store is updated. 
- * See your course material, consult your instructor, and reference the slides for more details.
- *
- * NO additional HTML elements should be added to the index.html file.
- *
- * You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
- *
- * SEE BELOW FOR THE CATEGORIES OF THE TYPES OF FUNCTIONS YOU WILL BE CREATING 👇
- * 
- */
-
-/********** TEMPLATE GENERATION FUNCTIONS **********/
-
-// These functions return HTML templates 
-
-/********** RENDER FUNCTION(S) **********/
-
-// This function conditionally replaces the contents of the <main> tag based on the state of the store
-
-/********** EVENT HANDLER FUNCTIONS **********/
-
-// These functions handle events (submit, click, etc)
