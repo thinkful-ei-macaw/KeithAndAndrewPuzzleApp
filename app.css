@@ -7,10 +7,41 @@
   *
 */
 
-body {background-color: lightblue;}
+* {
+  box-sizing: border-box;
+}
 
-legend { background-color: #000; color: #fff; padding: 3px 6px; }
+body {
+  background-color: lightblue;
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+legend { 
+  background-color: #000; 
+  color: #fff; 
+  padding: 3px 6px; 
+}
+
+button {
+  background-color: lightgrey;
+  color: black;
+  text-align: center;
+  padding: 5px;
+}
 
 .output { font: 1rem 'Fira Sans', sans-serif; }
 
 input { margin: .4rem; }
+
+@media screen and (max-width: 320px) {
+  header > h1 {
+    display: flex;
+    flex-direction: center;
+  }
+}

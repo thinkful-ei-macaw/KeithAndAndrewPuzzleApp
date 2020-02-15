@@ -94,20 +94,20 @@ function renderQuestion() {
 <p>You current score ${store.score} out of 5</p><br/>
 <p>You are currently answering question number ${(store.questionNumber) + 1}</p><br/>
 <fieldset> <legend>${store.questions[store.questionNumber].question}</legend>
-<input type="radio" id="Choice1" name="Choice" value="${store.questions[store.questionNumber].answers[0]}">
+<input type="radio" id="${store.questions[store.questionNumber].answers[0]}" name="Choice" value="${store.questions[store.questionNumber].answers[0]}">
 <label for="Choice1">${store.questions[store.questionNumber].answers[0]}</label><br/>
-<input type="radio" id="Choice2" name="Choice" value="${store.questions[store.questionNumber].answers[1]}">
+<input type="radio" id="${store.questions[store.questionNumber].answers[1]}" name="Choice" value="${store.questions[store.questionNumber].answers[1]}">
 <label for="Choice2">${store.questions[store.questionNumber].answers[1]}</label><br/>
-<input type="radio" id="Choice3" name="Choice" value="${store.questions[store.questionNumber].answers[2]}">
+<input type="radio" id="${store.questions[store.questionNumber].answers[2]}" name="Choice" value="${store.questions[store.questionNumber].answers[2]}">
 <label for="Choice3">${store.questions[store.questionNumber].answers[2]}</label><br/>
-<input type="radio" id="Choice4" name="Choice" value="${store.questions[store.questionNumber].answers[3]}">
+<input type="radio" id="${store.questions[store.questionNumber].answers[3]}" name="Choice" value="${store.questions[store.questionNumber].answers[3]}">
 <label for="Choice4">${store.questions[store.questionNumber].answers[3]}</label><br/>
-<button id="abc">Submit</button>
+<button id="submitForm">Submit</button>
 </fieldset>
 </form>`);}
 
 function getAnswerAndCompare() {
-  $('main').on('click', '#abc', event => {
+  $('main').on('click', '#submitForm', event => {
     console.log('getAnswerAndCompare()');
     event.preventDefault();
       
@@ -136,13 +136,13 @@ function getCorrectFeedback() {
     console.log(store.questionNumber);
     $('main').html(`
     <p>You current score ${store.score} out of 5</p><br/>
-    <p>Well howdy doo, you got it right.  Continue on yer way, partner.  Here's a button to push that I haven't made yet.</p>
-    <button type="submit" id="nextUp">Nice!</button>`)
+    <p>Well howdy doody, you got it right.  Continue on yer way, partner.</p>
+    <button type="submit" id="nextUp">Next Question</button>`)
   } else {
     $('main').html(`
     <p>You current score ${store.score} out of 5</p><br/>
-    <p>Well howdy doo, you got it right.  Continue on yer way, partner.  Here's a button to push that I haven't made yet.</p>
-    <button type="submit" id="finished">Finish Quiz yea boiii</button>`)
+    <p>Well howdy doody, you got it right.  Continue on yer way, partner.</p>
+    <button type="submit" id="finished">Finish Quiz</button>`)
   }
  
   
@@ -161,13 +161,13 @@ function getWrongFeedback() {
     console.log(store.questionNumber);
     $('main').html(`
     <p>You current score ${store.score} out of 5</p><br/>
-    <p>Yikes.  You selected ${selectedOption} while the correct answer was ${correct}.  You should spend some time to reflect, and then click this button when you can live with yourself again.</p>
-    <button type="submit" id="nextUp">I won't give up! I want to live!</button>`)
+    <p>Yikes.  You selected ${selectedOption} while the correct answer was ${correct}. Click Next Question below</p>
+    <button type="submit" id="nextUp">Next Question</button>`)
   } else {
     $('main').html(`
     <p>You current score ${store.score} out of 5</p><br/>
-    <p>Yikes.  You selected ${selectedOption} while the correct answer was ${correct}.  You should spend some time to reflect, and then click this button when you can live with yourself again.</p>
-    <button type="submit" id="finished">Good Lord it's finally over praise holy sweet jesus!</button>`)
+    <p>Yikes.  You selected ${selectedOption} while the correct answer was ${correct}.  Click Next Question below</p>
+    <button type="submit" id="finished">Finish Quiz</button>`)
   }
 };
 
