@@ -64,16 +64,17 @@ const store = {
 
 // starting page
 function pageBegin() {
-  $('header').html(`<h1>This is the message to begin.  Plz Click.  Thnx.</h1>`);
+  console.log('render pageBegin()');
+  $('header').html('<h1>This is the message to begin.  Plz Click.  Thnx.</h1>');
   $('main').html(`
     <button id="start" type="submit">Start</button>`);
 }
 
-$(pageBegin)
 
 // see that they hit the button and then actually start it
 function startQuiz() {
-  $('#start').on("click", ( event => {
+  $('#start').on('click', ( event => {
+    console.log('render startQuiz');
     event.preventDefault();
     store.score = 0;
     store.questionNumber = 0;
@@ -82,16 +83,19 @@ function startQuiz() {
     <p>You current score ${store.score} out of 5</p><br/>
     <p>You are currently answering question number ${(store.questionNumber) + 1}</p>`);
   }));
-  getAnswerAndCompare() 
+  getAnswerAndCompare();
+  nextQuestion();
+  endQuiz();
+
 }
 $(startQuiz) 
 
 // render the question output after the user clicks submit to being quiz
 
 function renderQuestion() {
-  console.log('Is this even working?');
+  console.log('renderQuestion()');
   $('main').html(`<form>
-<fieldset> <legend>${currentQuestion()}</legend>
+<fieldset> <legend>${store.questions[store.questionNumber].question}</legend>
 <input type="radio" id="Choice1" name="Choice" value="${store.questions[store.questionNumber].answers[0]}">
 <label for="Choice1">${store.questions[store.questionNumber].answers[0]}</label><br/>
 <input type="radio" id="Choice2" name="Choice" value="${store.questions[store.questionNumber].answers[1]}">
@@ -100,14 +104,14 @@ function renderQuestion() {
 <label for="Choice3">${store.questions[store.questionNumber].answers[2]}</label><br/>
 <input type="radio" id="Choice4" name="Choice" value="${store.questions[store.questionNumber].answers[3]}">
 <label for="Choice4">${store.questions[store.questionNumber].answers[3]}</label><br/>
-<button id="abc" type="submit">Submit</button>
+<button id="abc">Submit</button>
 </fieldset>
 </form>`
   );}
 
 function getAnswerAndCompare() {
   $('#abc').on('click', ( event => {
-    
+    console.log('getAnswerAndCompare()');
     event.preventDefault();
       
     const correct = store.questions[store.questionNumber].correctAnswer; 
@@ -121,10 +125,12 @@ function getAnswerAndCompare() {
     } else {
       getWrongFeedback();
 
-  };
-}));
+    }
+  }));
+}
 
 function getCorrectFeedback() {
+  console.log('getCorrectFeedback()');
   if(store.questionNumber < 5) {
     store.questionNumber++;
     $('main').html(`
@@ -140,9 +146,10 @@ function getCorrectFeedback() {
 }
 
 function getWrongFeedback() {
+  console.log('render wrongFeedBack()');
   if(store.questionNumber < 5) {
     store.questionNumber++;
-  $('main').html(`
+    $('main').html(`
     <p>Yikes.  You selected ${selectedOption} while the correct answer was ${correct}.  You should spend some time to reflect, and then click this button when you can live with yourself again.</p>
     <button type="submit" name="nextUp">I won't give up! I want to live!</button>`)
   } else {
@@ -153,14 +160,18 @@ function getWrongFeedback() {
 };
 
 function nextQuestion() {
+ 
   $('#nextUp').on('click', ( event => {
+    console.log('render nextQuestion()')
     event.preventDefault();
     renderQuestion();
   }))
 }
 
 function endQuiz() {
+  
   $('#finished').on('click', ( event => {
+    console.log('render endQuiz()');
     event.preventDefault();
     $('header').html(`<h1>Congrats! You've finished!!</h1><br/>
     <p>You scored a ${store.score} out of 5</p><br/>
@@ -169,6 +180,8 @@ function endQuiz() {
     `)
   }))
 }
+
+$(pageBegin)
 
 // if(store.questionNumber < 5) {} else {}
 
