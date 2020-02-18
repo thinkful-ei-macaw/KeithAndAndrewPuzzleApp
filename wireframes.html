@@ -1,0 +1,169 @@
+// initial page prompting user to start the quiz
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Quiz App" content="The LOST TV Show Quiz">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quiz App</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
+    type="text/css" />
+  <link href="app.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to the Lost Quiz.  Enter, if you dare.</h1>
+  </header>
+  <main>
+    <form id="quiz-form">
+        <button id="start" type="submit">Start</button>
+    </form>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
+
+// Question Page after the user has clicked the submit button to begin the quiz & clicked the continue button after being given feedback
+// if their answer is right or wrong.
+
+!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Quiz App" content="The LOST TV Show Quiz">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quiz App</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
+    type="text/css" />
+  <link href="app.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <header>
+        <h1>You are now taking the quiz</h1>
+    </header>
+    <main>
+        <form>
+            You current score ${store.score} out of 5<br/>
+            You are currently answering question number ${(store.questionNumber) + 1}<br/><br/>
+            <fieldset> <legend>${store.questions[store.questionNumber].question}</legend>
+            <input type="radio" id="${store.questions[store.questionNumber].answers[0]}" name="Choice" value="${store.questions[store.questionNumber].answers[0]}">
+            <label for="Choice1">${store.questions[store.questionNumber].answers[0]}</label><br/>
+            <input type="radio" id="${store.questions[store.questionNumber].answers[1]}" name="Choice" value="${store.questions[store.questionNumber].answers[1]}">
+            <label for="Choice2">${store.questions[store.questionNumber].answers[1]}</label><br/>
+            <input type="radio" id="${store.questions[store.questionNumber].answers[2]}" name="Choice" value="${store.questions[store.questionNumber].answers[2]}">
+            <label for="Choice3">${store.questions[store.questionNumber].answers[2]}</label><br/>
+            <input type="radio" id="${store.questions[store.questionNumber].answers[3]}" name="Choice" value="${store.questions[store.questionNumber].answers[3]}">
+            <label for="Choice4">${store.questions[store.questionNumber].answers[3]}</label><br/>
+            <button id="submitForm">Submit</button>
+            </fieldset>
+            </form>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+  </body>
+  
+  </html>
+
+  // Feedback page user is sent to if they give the correct answer
+
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Quiz App" content="The LOST TV Show Quiz">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quiz App</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
+    type="text/css" />
+  <link href="app.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <header>
+    <h1>You are now taking the quiz</h1>
+  </header>
+  <main>
+    <p>You current score ${store.score} out of 5</p><br/>
+    <p>Well howdy doody, you got it right.  Continue on yer way, partner.</p>
+    <button type="submit" id="nextUp">Next Question</button>`)
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
+
+// Feedback page user is sent to if they give the incorrect answer
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Quiz App" content="The LOST TV Show Quiz">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quiz App</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
+    type="text/css" />
+  <link href="app.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <header>
+    <h1>You are now taking the quiz</h1>
+  </header>
+  <main>
+    <p>You current score ${store.score} out of 5</p><br/>
+    <p>Yikes.  You selected ${selectedOption} while the correct answer was ${correct}. Click Next Question below</p>
+    <button type="submit" id="nextUp">Next Question</button>`)
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
+
+// Upon completiong of the quiz, the final screen the user is sent to give them their final score and ask if they
+// want to restart the quiz.
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Quiz App" content="The LOST TV Show Quiz">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quiz App</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
+    type="text/css" />
+  <link href="app.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <header>
+    <h1>Congrats! You've finished!!</h1>
+  </header>
+  <main>
+    <p>You scored a ${store.score} out of 5</p><br/>
+    <p>Would you like to retake the quiz?</p><br/>
+    <button type="submit" id="start">CLICK HERE!</button>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
